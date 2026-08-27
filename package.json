@@ -2,16 +2,19 @@
   "name": "navrang-2k26-pass-app",
   "version": "1.0.0",
   "private": true,
+  "prisma": {
+    "schema": "prisma/schema.prisma"
+  },
   "scripts": {
     "dev": "next dev",
-    "build": "prisma generate && next build",
+    "build": "prisma generate --schema=prisma/schema.prisma && next build",
     "start": "next start",
     "lint": "next lint",
-    "postinstall": "prisma generate",
-    "prisma:generate": "prisma generate",
-    "prisma:push": "prisma db push",
+    "postinstall": "prisma generate --schema=prisma/schema.prisma",
+    "prisma:generate": "prisma generate --schema=prisma/schema.prisma",
+    "prisma:push": "prisma db push --schema=prisma/schema.prisma",
     "prisma:seed": "node prisma/seed.js",
-    "vercel-build": "prisma generate && prisma db push && next build"
+    "vercel-build": "prisma generate --schema=prisma/schema.prisma && prisma db push --schema=prisma/schema.prisma && next build"
   },
   "dependencies": {
     "@prisma/client": "^5.21.1",
